@@ -1,12 +1,12 @@
 .upper-part{
-    border:5px solid black;
+    
     
     width:100%;
     min-height:1800px;
     position:relative;
 }
 .computation-part{
-    border:1px solid red;
+    
     width:100%;
     
     box-sizing: border-box;

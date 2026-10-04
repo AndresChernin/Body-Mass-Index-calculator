@@ -7,14 +7,14 @@
     display:flex;
     justify-content: center;
     align-items: flex-start;
-    border:1px solid black;
+    
 }
 
 .explanation-part-inner-container{
   width:100%;
   display:flex;
   flex-direction: column;
-  border:1px solid red;
+  
 }
 .title-part{
     text-align: left;
@@ -23,7 +23,7 @@
     text-align: left;
 }
 .big-image-explanation-part{
-    border:3px solid red;
+    
     width:100%;
     box-sizing: border-box;
     display:flex;
