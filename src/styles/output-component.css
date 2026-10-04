@@ -1,0 +1,43 @@
+.output-part{
+    width: 100%;
+    min-height: 300px;
+    box-sizing: border-box;
+    background-color: var(--blue-text-3);
+    border-radius: 25px;
+    margin-top:1rem;
+    padding:var(--padding-for-label-and-bmi-part);
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap:1rem;
+}
+.output-part p, .output-part h1, .output-part span{
+    color:var(--very-hell-blue-text);
+    padding:0;
+    margin:0;
+}
+.output-part h1{
+    margin-bottom:1rem;
+}
+.output-part span{
+    font-weight: 600;
+    text-align: left;
+}
+.output-part p{
+    text-align: left;
+}
+.output-error {
+    background-color: #ffdddd;
+}
+
+.output-error h1,
+.output-error p {
+    color: #d32f2f;
+}
+
+@media(min-width:1200px){
+    .output-part{
+        border-top-right-radius: 150px;
+        border-bottom-right-radius: 150px;
+    }
+}
