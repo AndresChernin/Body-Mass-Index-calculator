@@ -1,0 +1,113 @@
+.limitations-part{
+  background-color: white;
+    
+    width:100%;
+ box-sizing: border-box;
+ padding-left: var(--unversal-mobile-padding);
+ padding-right: var(--unversal-mobile-padding);
+ padding-top:4rem;
+ display:flex;
+ justify-content: center;
+ align-items: center;
+}
+.limitations-inner-container{
+    
+    width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:2rem;
+}
+.limitations-part-title{
+  
+  text-align: center;
+  font-size: 55px;
+}
+.limitation-component{
+  
+  
+  border-radius: 15px;
+  width:100%;
+  box-sizing: border-box;
+  padding:1rem;
+  display:flex;
+  flex-direction: column;
+
+  box-shadow: 50px 30px 100px var(--hell-blue-color);
+}
+.title-bild-part{
+  width:100%;
+  padding:0;
+  padding-top:0.25rem;
+  padding-bottom: 0.25rem;
+  
+  display:flex;
+  align-items: center;
+  gap:1rem;
+}
+.limitation-img{
+  height:60px;
+}
+
+.limitation-component-title{
+  padding:0;
+  margin:0;
+  font-weight: 650;
+  color:var(--dark-blue-text);
+  font-size:35px;
+}
+.limitations-title-intro-part{
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  text-align: left;
+}
+.limitation-explanation-part{
+  text-align: left;
+  padding:0;
+}
+@media (min-width: 1200px) {
+    .limitations-inner-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        row-gap: 3rem;
+        align-items: stretch;
+    }
+    .limitations-title-intro-part {
+        grid-column: 1 / 3;
+    }
+    .limitation-component:last-child {
+        grid-column: 1 / 3;
+        justify-self: center;
+         width: calc(50% - 1rem);
+    }
+}
+@media (min-width: 1700px) {
+
+    .limitations-inner-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: stretch;
+    }
+
+    .limitations-title-intro-part {
+        grid-column: 1;
+    }
+    .limitation-component{
+      width:45rem;
+    }
+    .limitation-component:last-child {
+        grid-column: auto;
+        justify-self: auto;
+        width: 45rem;
+    }
+    .limitations-title-intro-part{
+      width:60rem;
+      align-items: flex-start;
+    }
+    .limitation-intro-part{
+      text-align: left;
+    }
+}
