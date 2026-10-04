@@ -1,5 +1,5 @@
 .input-part{
-    border:5px dotted blue;
+   
     width:100%;
     box-sizing: border-box;
     display:flex;
@@ -35,7 +35,7 @@
         
     }
     .introduction-part{
-        border:1px solid blue;
+       
         
         max-width: 70%;
         padding-right:40%;
