@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI calculator</title>
   
-    
+   
     <link rel="stylesheet" href="/src/styles/main-container.css">
     <link rel="stylesheet" href="/src/styles/output-component.css">
     <link rel="stylesheet" href="/src/styles/introduction-component.css">
     <link rel="stylesheet" href="/src/styles/computation-component.css">
+    <link rel="stylesheet" href="/src/styles/computation-component2.css">
     <link rel="stylesheet" href="/src/styles/big-image-component.css">
     <link rel="stylesheet" href="/src/styles/explanation-component.css">
+     <link rel="stylesheet" href="/src/styles/healthy-tipps-section.css">
+     <link rel="stylesheet" href="/src/styles/limitations-section.css">
+      <link rel="stylesheet" href="/starter-code/assets/images/icon-pregnancy.svg">
      <link rel="stylesheet" href="/starter-code/assets/images/image-man-eating.webp">
   <link rel="stylesheet" href="/starter-code/assets/images/logo.svg">
   <link rel="stylesheet" href="/starter-code/assets/fonts/Inter-VariableFont_slnt,wght.ttf">
@@ -42,14 +46,21 @@
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     
     <script src="/src/components/IntroductionComponent.jsx" type="text/babel"></script>
-    <script src="/src/components/ComputationComponent.jsx" type="text/babel"></script>      
-   <script src="/src/components/OutputComponent.jsx" type="text/babel"></script>
+    
+    <script src="/src/components/ComputationComponent2.jsx" type="text/babel"></script>      
+   
    <script src="/src/components/OutputComponent2.jsx" type="text/babel"></script>
    <script src="/src/components/BigImageComponent.jsx" type="text/babel"></script>
    <script src="/src/components/ExplanationComponent.jsx" type="text/babel"></script>
+   <script src="/src/components/HealthyTippsSection.jsx" type="text/babel"></script>
+   <script src="/src/components/HealthyTipp.jsx" type="text/babel"></script>
+   <script src="/src/components/LimitationsSection.jsx" type="text/babel"></script>
+   <script src="/src/components/LimitationComponent.jsx" type="text/babel"></script>
    <script src="/src/classes/BMIController.js" type="text/babel"></script>
    <script src="/src/classes/BMIModel.js" type="text/babel"></script>
    <script src="/src/data/data.js" type="text/babel"></script>
+   <script src="/src/data/healthyData.js" type="text/babel"></script>
+   <script src="/src/data/limitationsData.js" type="text/babel"></script>
     <script type="text/babel">
       
 
@@ -90,18 +101,35 @@
         }
 
         const myController = controllerRef.current;
+
+       function updateBMI(height, weight) {
+
+           const newBMI = myController.calculateBMI(unit, height, weight);
+           setBmi(newBMI);
+           myController.setBMI(newBMI);
+           myController.setBMIData();
+
+           setClassification(myController.getClassification());
+           setExplanation(myController.getExplanation());
+       }
+
+       function updateHealthyWeightRange() {
+           
+           const range =myController.calculateHealthyWeightRange();
+          
+           setMinWeight(range.min);
+           setMaxWeight(range.max);
+       }
+
+       function updateBMIData(height, weight) {
+          updateBMI(height, weight);
+          updateHealthyWeightRange();
+       }
+
      
            function makeFirstValidation(){
           
-          const bmiAkt=myController.calculateBMI(unit, heightMetric, weightMetric);
-          setBmi(bmiAkt);
-          const range=myController.calculateHealthyWeightRange();
-          setMinWeight(range.min);
-          setMaxWeight(range.max);
-          myController.setBMI(bmiAkt);
-          myController.setBMIData();
-          setClassification(myController.getClassification());
-          setExplanation(myController.getExplanation());
+          updateBMIData(heightMetric, weightMetric);
          
           
         }
@@ -118,19 +146,8 @@
 
          setHeightMetric(value);
          const newError= myController.controllMetricHeight(value);
-         if(newError===""){
-          const newBMI=myController.calculateBMI(unit, value, weightMetric);
-          setBmi(newBMI);
-          myController.setBMI(newBMI);
-          myController.setBMIData();
-          const newClassification=myController.getClassification();
-          const newExplanation=myController.getExplanation();
-          const newMinWeight=myController.calculateHealthyWeightRange().min;
-          setMinWeight(newMinWeight);
-          const newMaxWeight=myController.calculateHealthyWeightRange().max;
-          setMaxWeight(newMaxWeight);
-          setClassification(newClassification);
-          setExplanation(newExplanation);
+         if(newError==="" && metricErrors.weight===""){
+          updateBMIData(value, weightMetric);
          }
          else{
            
@@ -150,17 +167,8 @@
          }
            setWeightMetric(value);
            const newError= myController.controllMetricWeight(value);
-           if(newError===""){
-              console.log(`heightMetric:${heightMetric}; weightMetric:${weightMetric}`);
-              const newBMI=myController.calculateBMI(unit, heightMetric, value);
-              setBmi(newBMI);
-              console.log(`newBmi:${newBMI}`);
-              myController.setBMI(newBMI);
-              myController.setBMIData();
-              const newClassification=myController.getClassification();
-              const newExplanation=myController.getExplanation();
-              setClassification(newClassification);
-              setExplanation(newExplanation);  
+           if(newError==="" && metricErrors.height===""){
+                updateBMIData(heightMetric, value);
               
            }
            else{
@@ -184,14 +192,8 @@
           
         const newError= myController.controllImperialHeight(newHeightImperial);
         console.log(`New error height imperial ${newError}`);
-        if(newError===""){
-          const newBMI=myController.calculateBMI(unit,heightImperial,weightImperial);
-          myController.setBMI(newBMI);
-              myController.setBMIData();
-              const newClassification=myController.getClassification();
-              const newExplanation=myController.getExplanation();
-              setClassification(newClassification);
-              setExplanation(newExplanation);  
+        if(newError==="" && imperialErrors.weight===""){
+          updateBMIData(newHeightImperial, weightImperial);
         }
         else{
           setExplanation(defaultExplanation);
@@ -293,14 +295,8 @@
         setWeightImperial(newWeightImperial);
           
         const newError= myController.controllImperialWeight(newWeightImperial);
-        if(newError===""){
-          const newBMI=myController.calculateBMI(unit,heightImperial,weightImperial);
-          myController.setBMI(newBMI);
-              myController.setBMIData();
-              const newClassification=myController.getClassification();
-              const newExplanation=myController.getExplanation();
-              setClassification(newClassification);
-              setExplanation(newExplanation);  
+        if(newError==="" && imperialErrors.height===""){
+          updateBMIData(heightImperial,newWeightImperial) 
         }
         else{
           setExplanation(defaultExplanation);
@@ -318,31 +314,14 @@
           const newUnit=event.target.value;
           if(newUnit==="metric")
           {
-          const bmiAkt=myController.calculateBMI(newUnit, heightMetric, weightMetric);
-          setBmi(bmiAkt);
-          const range=myController.calculateHealthyWeightRange();
-          setMinWeight(range.min);
-          setMaxWeight(range.max);
-          myController.setBMI(bmiAkt);
-          myController.setBMIData();
-          setClassification(myController.getClassification());
-          setExplanation(myController.getExplanation());
+          updateBMIData(heightImperial, weightImperial);
           setHeightImperial({feet:5,inches:5});
           setWeightImperial({stones:11,pounds:11});
           setImperialErrors({height:"", weight:""});
           }
           if(newUnit==="imperial")
           {
-          const bmiAkt=myController.calculateBMI(newUnit, heightImperial, weightImperial);
-          setBmi(bmiAkt);
-          console.log(`bmiAkt=${bmiAkt}`);
-          const range=myController.calculateHealthyWeightRange();
-          setMinWeight(range.min);
-          setMaxWeight(range.max);
-          myController.setBMI(bmiAkt);
-          myController.setBMIData();
-          setClassification(myController.getClassification());
-          setExplanation(myController.getExplanation());
+          updateBMIData(heightMetric, weightMetric);
           setHeightMetric(170);
           setWeightMetric(75);
           setMetricErrors({height:"", weight:""});
@@ -356,7 +335,7 @@
           <main className={`main-container` }>
           <div className={`upper-part`}>
           <IntroductionComponent logoImg="/starter-code/assets/images/logo.svg"/>         
-          <ComputationComponent 
+          <ComputationComponent2 
           unit={unit} handleChangeOfUnit={handleChangeOfUnit}
           heightMetric={heightMetric} weightMetric={weightMetric}
           handleHeightChangeMetric={handleHeightChangeMetric}
@@ -370,9 +349,13 @@
           errorsImperial={imperialErrors}
           />  
           </div> 
-          <BigImageComponent 
-          bigImageLink="/starter-code/assets/images/image-man-eating.webp" /> 
-          <ExplanationComponent explanation={explanation} />               
+          <div className="big-image-explanation-part">
+             <BigImageComponent 
+                  bigImageLink="/starter-code/assets/images/image-man-eating.webp" /> 
+             <ExplanationComponent explanation={explanation} />
+           </div>  
+          <HealthyTippsSection healthyData={healthyData} />
+          <LimitationsSection data={limitationsData} />               
           </main>
          )      
          
