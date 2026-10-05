@@ -6,18 +6,16 @@
     <title>BMI calculator</title>
   
    
-    <link rel="stylesheet" href="/src/styles/main-container.css">
-    <link rel="stylesheet" href="/src/styles/output-component.css">
-    <link rel="stylesheet" href="/src/styles/introduction-component.css">
-    <link rel="stylesheet" href="/src/styles/computation-component.css">
-    <link rel="stylesheet" href="/src/styles/computation-component2.css">
-    <link rel="stylesheet" href="/src/styles/big-image-component.css">
-    <link rel="stylesheet" href="/src/styles/explanation-component.css">
-     <link rel="stylesheet" href="/src/styles/healthy-tipps-section.css">
-     <link rel="stylesheet" href="/src/styles/limitations-section.css">
-      <link rel="stylesheet" href="/starter-code/assets/images/icon-pregnancy.svg">
-     <link rel="stylesheet" href="/starter-code/assets/images/image-man-eating.webp">
-  <link rel="stylesheet" href="/starter-code/assets/images/logo.svg">
+    <link rel="stylesheet" href="src/styles/main-container.css">
+    <link rel="stylesheet" href="src/styles/output-component.css">
+    <link rel="stylesheet" href="src/styles/introduction-component.css">
+    <link rel="stylesheet" href="src/styles/computation-component.css">
+    <link rel="stylesheet" href="src/styles/computation-component2.css">
+    <link rel="stylesheet" href="src/styles/big-image-component.css">
+    <link rel="stylesheet" href="src/styles/explanation-component.css">
+     <link rel="stylesheet" href="src/styles/healthy-tipps-section.css">
+     <link rel="stylesheet" href="src/styles/limitations-section.css">
+    
   <link rel="stylesheet" href="/starter-code/assets/fonts/Inter-VariableFont_slnt,wght.ttf">
    <link href=
     "https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;700,800&display=swap" 
@@ -45,22 +43,22 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     
-    <script src="/src/components/IntroductionComponent.jsx" type="text/babel"></script>
+    <script src="src/components/IntroductionComponent.jsx" type="text/babel"></script>
     
-    <script src="/src/components/ComputationComponent2.jsx" type="text/babel"></script>      
+    <script src="src/components/ComputationComponent2.jsx" type="text/babel"></script>      
    
-   <script src="/src/components/OutputComponent2.jsx" type="text/babel"></script>
-   <script src="/src/components/BigImageComponent.jsx" type="text/babel"></script>
-   <script src="/src/components/ExplanationComponent.jsx" type="text/babel"></script>
-   <script src="/src/components/HealthyTippsSection.jsx" type="text/babel"></script>
-   <script src="/src/components/HealthyTipp.jsx" type="text/babel"></script>
-   <script src="/src/components/LimitationsSection.jsx" type="text/babel"></script>
-   <script src="/src/components/LimitationComponent.jsx" type="text/babel"></script>
-   <script src="/src/classes/BMIController.js" type="text/babel"></script>
-   <script src="/src/classes/BMIModel.js" type="text/babel"></script>
-   <script src="/src/data/data.js" type="text/babel"></script>
-   <script src="/src/data/healthyData.js" type="text/babel"></script>
-   <script src="/src/data/limitationsData.js" type="text/babel"></script>
+   <script src="src/components/OutputComponent2.jsx" type="text/babel"></script>
+   <script src="src/components/BigImageComponent.jsx" type="text/babel"></script>
+   <script src="src/components/ExplanationComponent.jsx" type="text/babel"></script>
+   <script src="src/components/HealthyTippsSection.jsx" type="text/babel"></script>
+   <script src="src/components/HealthyTipp.jsx" type="text/babel"></script>
+   <script src="src/components/LimitationsSection.jsx" type="text/babel"></script>
+   <script src="src/components/LimitationComponent.jsx" type="text/babel"></script>
+   <script src="src/classes/BMIController.js" type="text/babel"></script>
+   <script src="src/classes/BMIModel.js" type="text/babel"></script>
+   <script src="src/data/data.js" type="text/babel"></script>
+   <script src="src/data/healthyData.js" type="text/babel"></script>
+   <script src="src/data/limitationsData.js" type="text/babel"></script>
     <script type="text/babel">
       
 
@@ -205,82 +203,7 @@
        
         }
 
-        function handleHeightChangeImperial2(event) {
-
-    console.log("========================================");
-    console.log("handleHeightChangeImperial START");
-
-    // 1. Was kommt vom Input?
-    const { name, value } = event.target;
-
-    console.log("1. Event:");
-    console.log("   name:", name);
-    console.log("   value:", value);
-
-    // 2. Aktueller React-State
-    console.log("2. Aktueller heightImperial-State:");
-    console.log("   feet:", heightImperial.feet);
-    console.log("   inches:", heightImperial.inches);
-
-    // 3. Zeichen überprüfen
-    const wrongSymbols = myController.containsWrongSymbols(value);
-    const negativeValue = myController.containsNegativeValues(value);
-
-    console.log("3. Zeichenprüfung:");
-    console.log("   containsWrongSymbols:", wrongSymbols);
-    console.log("   containsNegativeValues:", negativeValue);
-
-    if (wrongSymbols || negativeValue) {
-        console.log("❌ Eingabe wird abgelehnt");
-        console.log("========================================");
-        return;
-    }
-
-    // 4. Neuer Height-State wird VOR setState gebaut
-    const newHeightImperial = {
-        ...heightImperial,
-        [name]: value
-    };
-
-    console.log("4. Neuer heightImperial-Wert:");
-    console.log("   feet:", newHeightImperial.feet);
-    console.log("   inches:", newHeightImperial.inches);
-
-    // 5. Vergleich alt vs. neu
-    console.log("5. Vergleich:");
-    console.log("   ALTER State:", heightImperial);
-    console.log("   NEUER Wert:", newHeightImperial);
-
-    // 6. State aktualisieren
-    setHeightImperial(newHeightImperial);
-
-    console.log("6. setHeightImperial wurde aufgerufen");
-
-    // 7. Jetzt mit dem NEUEN Wert validieren!
-    console.log("7. Starte controllImperialHeight mit:");
-    console.log(newHeightImperial);
-
-    const newError =
-        myController.controllImperialHeight(newHeightImperial);
-
-    console.log("8. Ergebnis controllImperialHeight:");
-    console.log("   newError:", newError);
-
-    // 8. Error-State aktualisieren
-    setImperialErrors({
-        ...imperialErrors,
-        height: newError
-    });
-
-    console.log("9. imperialErrors wird gesetzt:");
-    console.log({
-        ...imperialErrors,
-        height: newError
-    });
-
-    console.log("handleHeightChangeImperial END");
-    console.log("========================================");
-}
+       
 
         function handleWeightChangeImperial(event) {
          const { name, value } = event.target;
