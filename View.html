@@ -45,13 +45,13 @@
     
     <script src="src/components/IntroductionComponent.jsx" type="text/babel"></script>
     
-    <script src="src/components/ComputationComponent2.jsx" type="text/babel"></script>      
+    <script src="src/components/ComputationComponent.jsx" type="text/babel"></script>      
    
-   <script src="src/components/OutputComponent2.jsx" type="text/babel"></script>
+   <script src="src/components/OutputComponent.jsx" type="text/babel"></script>
    <script src="src/components/BigImageComponent.jsx" type="text/babel"></script>
    <script src="src/components/ExplanationComponent.jsx" type="text/babel"></script>
-   <script src="src/components/HealthyTippsSection.jsx" type="text/babel"></script>
-   <script src="src/components/HealthyTipp.jsx" type="text/babel"></script>
+   <script src="src/components/HealthyTipsSection.jsx" type="text/babel"></script>
+   <script src="src/components/HealthyTip.jsx" type="text/babel"></script>
    <script src="src/components/LimitationsSection.jsx" type="text/babel"></script>
    <script src="src/components/LimitationComponent.jsx" type="text/babel"></script>
    <script src="src/classes/BMIController.js" type="text/babel"></script>
@@ -271,7 +271,7 @@
           <main className={`main-container` }>
           <div className={`upper-part`}>
           <IntroductionComponent logoImg="starter-code/assets/images/logo.svg"/>         
-          <ComputationComponent2 
+          <ComputationComponent 
           unit={unit} handleChangeOfUnit={handleChangeOfUnit}
           heightMetric={heightMetric} weightMetric={weightMetric}
           handleHeightChangeMetric={handleHeightChangeMetric}
@@ -294,7 +294,7 @@
                   bigImageLink="starter-code/assets/images/image-man-eating.webp" /> 
              <ExplanationComponent explanation={explanation} />
            </div>  
-          <HealthyTippsSection healthyData={healthyData} />
+          <HealthyTipsSection healthyData={healthyData} />
           <LimitationsSection data={limitationsData} />               
           </main>
          )      
