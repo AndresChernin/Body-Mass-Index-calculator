@@ -12,8 +12,8 @@ background: linear-gradient(
         var(--hell-blue-color) 55%,
         #9bb8d4 100%
     );
-  border-bottom-left-radius: 35px;
-  border-bottom-right-radius: 35px;
+  border-bottom-left-radius: 2.188rem;
+  border-bottom-right-radius: 2.188rem;
   box-sizing: border-box;
   display:flex;
   flex-direction: column;

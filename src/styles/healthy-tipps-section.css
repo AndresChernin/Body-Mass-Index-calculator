@@ -16,7 +16,7 @@
   align-items: flex-start;
 }
 .healthy-tipp-title{
-    font-size: 45px;
+    font-size: 2.813rem;
     
     text-align: left;
 }
@@ -24,10 +24,10 @@
     text-align: left;
 }
 .tip-image-container{
-    height:120px;
-    width: 120px;
+    height:7.5rem;
+    width: 7.5rem;
 }
-@media(min-width:1700px){
+@media(min-width:106.25rem){
    .healthy-tipps-inner-container{
     flex-direction: row;
    }
