@@ -1,4 +1,4 @@
-function HealthyTipp({imgLink,title,explanation}){
+function HealthyTip({imgLink,title,explanation}){
     return(
         <div className="healthy-tipp-part">
             <img src={imgLink} className="tip-image-container"/>

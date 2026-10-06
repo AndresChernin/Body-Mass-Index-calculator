@@ -1,9 +1,9 @@
-function HealthyTippsSection({healthyData}){
+function HealthyTipsSection({healthyData}){
     return(
         <section className="healthy-tipps-part">
             <div className="healthy-tipps-inner-container">
                 {healthyData.map((tip) => (
-          <HealthyTipp
+          <HealthyTip
             key={tip.title}
             imgLink={tip.imgLink}
             title={tip.title}
