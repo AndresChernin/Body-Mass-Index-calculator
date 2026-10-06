@@ -21,19 +21,19 @@
 .limitations-part-title{
   
   text-align: center;
-  font-size: 55px;
+  font-size: 3.438rem;
 }
 .limitation-component{
   
   
-  border-radius: 15px;
+  border-radius: 0.938rem;
   width:100%;
   box-sizing: border-box;
   padding:1rem;
   display:flex;
   flex-direction: column;
 
-  box-shadow: 50px 30px 100px var(--hell-blue-color);
+  box-shadow: 3.125rem 1.875rem 6.25rem var(--hell-blue-color);
 }
 .title-bild-part{
   width:100%;
@@ -46,7 +46,7 @@
   gap:1rem;
 }
 .limitation-img{
-  height:60px;
+  height:3.75rem;
 }
 
 .limitation-component-title{
@@ -54,7 +54,7 @@
   margin:0;
   font-weight: 650;
   color:var(--dark-blue-text);
-  font-size:35px;
+  font-size:2.188rem;
 }
 .limitations-title-intro-part{
   width:100%;
@@ -66,7 +66,7 @@
   text-align: left;
   padding:0;
 }
-@media (min-width: 1200px) {
+@media (min-width: 75rem) {
     .limitations-inner-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -83,7 +83,7 @@
          width: calc(50% - 1rem);
     }
 }
-@media (min-width: 1700px) {
+@media (min-width: 106.25rem) {
 
     .limitations-inner-container {
         display: grid;

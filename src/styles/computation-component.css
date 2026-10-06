@@ -2,7 +2,7 @@
     
     
     width:100%;
-    min-height:1800px;
+    
     position:relative;
 }
 .computation-part{
@@ -18,12 +18,12 @@
     align-items: flex-start;
 
     position: absolute;
-    top:550px;
-    box-shadow: 20px 20px 100px var(--hell-blue-color);
+    top:34.375rem;
+    box-shadow: 1.25rem 1.25rem 6.25rem var(--hell-blue-color);
     
 }
 .computation-part-inner-container{
-    border-radius: 15px;
+    border-radius: 0.938rem;
     padding:var(--computation-part-mobile-padding);
     width:100%;
     background-color: var(--white-color);
@@ -34,7 +34,7 @@
 .h1-for-computation-part{
     
     text-align: left;
-    font-size:35px;
+    font-size:2.188rem;
 }
 .computation-part-metric-or-imperial-part{
    
@@ -54,16 +54,16 @@
     position:absolute;
 }
 .computation-part-metric-or-imperial-part label span {
-    width: 60px;
-    height: 60px;
-    border: 1px solid var(--dark-blue-text);
+    width: 3.75rem;
+    height: 3.75rem;
+    border: 0.063rem solid var(--dark-blue-text);
     border-radius: 50%;
     display: inline-block;
     box-sizing: border-box;
     cursor:pointer;
 }
 .computation-part-metric-or-imperial-part label span:hover {
-border: 3px solid var(--gray-blue-text);
+border: 0.188rem solid var(--gray-blue-text);
 }    
 .computation-part-metric-or-imperial-part input:checked + span {
     background-color:  var(--very-hell-blue-text);
@@ -77,8 +77,8 @@ border: 3px solid var(--gray-blue-text);
 
 .computation-part-metric-or-imperial-part input:checked + span::after {
     content: "";
-    width: 35px;
-    height: 35px;
+    width: 2.188rem;
+    height: 2.188rem;
     background-color: var(--blue-text);
     border-radius: 50%;
 
@@ -91,7 +91,7 @@ border: 3px solid var(--gray-blue-text);
    background-color: var(--blue-text-2); 
 }
 .text-in-metric-or-imperial-part{
-    font-size: 25px;
+    font-size: 1.563rem;
     color:var(--dark-blue-text);
     font-weight: 650;
 }
@@ -110,7 +110,7 @@ border: 3px solid var(--gray-blue-text);
 .text-in-weight-input-container{
     width:100%;
     text-align: left;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
     margin-bottom: 0;
     padding:0;
@@ -119,21 +119,21 @@ border: 3px solid var(--gray-blue-text);
     color:white;
     margin-bottom: 0;
     padding:0;
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 .error-message{
     color:rgb(206, 57, 57);
     margin-bottom: 0;
     padding:0;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
 }
 .label-for-height-input-metric,
 .label-for-weight-input-metric
 {
-    border:1px solid var(--dark-blue-text);
+    border:0.063rem solid var(--dark-blue-text);
     width:100%;
-    border-radius: 15px;
+    border-radius: 0.938rem;
     box-sizing: border-box;
     padding:var(--padding-for-label-and-bmi-part);
     display:flex;
@@ -146,13 +146,13 @@ border: 3px solid var(--gray-blue-text);
     margin:0;
     font-weight: 600;
     color:var(--blue-text);
-    font-size:30px;
+    font-size:1.875rem;
 }
 .label-for-height-input-metric input,
 .label-for-weight-input-metric input {
    
     outline: none;
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: 600;
     color: var(--dark-blue-text);
     width:100%;;
@@ -176,8 +176,8 @@ border: 3px solid var(--gray-blue-text);
 .container-for-height-imperial-input{
   width:100%;
   box-sizing: border-box;
-  border:1px solid var(--dark-blue-text);
-  border-radius: 15px;
+  border:0.063rem solid var(--dark-blue-text);
+  border-radius: 0.938rem;
   display:flex;
 }
 .label-for-feet-input,.label-for-inches-input{
@@ -192,7 +192,7 @@ border: 3px solid var(--gray-blue-text);
 .label-for-feet-input input,.label-for-inches-input input{
    width:100%; 
   outline: none;
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: 600;
     color: var(--dark-blue-text);
      border:none;
@@ -205,8 +205,8 @@ border: 3px solid var(--gray-blue-text);
 .container-for-weight-imperial-input{
   width:100%;
   box-sizing: border-box;
-  border:1px solid var(--dark-blue-text);
-  border-radius: 15px;
+  border:0.063rem solid var(--dark-blue-text);
+  border-radius: 0.938rem;
   display:flex;
 }
 .label-for-stones-input,.label-for-pounds-input{
@@ -221,7 +221,7 @@ border: 3px solid var(--gray-blue-text);
 .label-for-stones-input input,.label-for-pounds-input input{
    width:100%; 
   outline: none;
-    font-size: 30px;
+    font-size: 1.875rem;
     font-weight: 600;
     color: var(--dark-blue-text);
     border:none;
@@ -248,5 +248,8 @@ border: 3px solid var(--gray-blue-text);
     margin: 0;
 }
 .error-label{
-    border:1px solid rgb(206, 57, 57);
+    border:0.063rem solid rgb(206, 57, 57);
+}
+.spacer-part{
+    height:50rem;
 }

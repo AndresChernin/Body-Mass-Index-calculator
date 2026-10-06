@@ -6,7 +6,7 @@
     flex-direction: column;
 }
 
-@media(min-width:1100px){
+@media(min-width:68.75rem){
    
     .input-part{
         flex-direction: row;
@@ -19,20 +19,23 @@
         min-width: 0;
     }
 }
-@media(min-width:1700px){
+@media(min-width:106.25rem){
     .upper-part{
         min-height:auto;
         padding-bottom: 3rem;
     }
      .computation-part{
-        max-width: 1000px;
+        max-width: 62.5rem;
     
         padding:0;
         top: 50%;
         
         right:30%;
-         transform:translate(50%, -50%) ;
+        transform:translate(50%, -50%) ;
         
+    }
+    .spacer-part{
+        height:0;
     }
     .introduction-part{
        

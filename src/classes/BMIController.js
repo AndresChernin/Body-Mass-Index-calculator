@@ -7,18 +7,17 @@ class BMIController{
     calculateBMI(unit, height, weight){
         let aktHeight=height;
         let aktWeight=weight;
-        console.log(aktHeight);
-        console.log(aktWeight);
+        
         if(unit==="imperial"){
             aktHeight=this.convertHeightImperial(aktHeight);
-            console.log(`aktHeight:${aktHeight}`);
+            
             aktWeight=this.convertWeightImperial(aktWeight);
-            console.log(`aktWeight:${aktWeight}`);
+            
         }
         this.model.setHeight(aktHeight);
         this.model.setWeight(aktWeight);
         let bmiAkt=this.model.calculateBMI();
-        console.log(`bmiAKt=${bmiAkt}`);
+        
        return bmiAkt;
     }
     calculateHealthyWeightRange(){
@@ -26,25 +25,25 @@ class BMIController{
         return range;
     }
     setBMI(bmi){
-        console.log(`We are in MyCOntroller.setBMI()`);
+       
         this.bmi=bmi;
-        console.log(`this.bmi=${this.bmi}`);
+        
     }
     getBMI(){
         return this.bmi;
     }
     setBMIData(){
-        console.log(`We are in MyCOntroller.setBMIData()`);
-        console.log(`bmi: ${this.bmi}`);
+        
+        
         this.bmiDataResult = this.model.getBMIData(this.bmi);
-        console.log(`this.bmiDataResult:${this.bmiDataResult}`);
+        
 
     }
     getClassification(){
         if(this.bmiDataResult===null){
             console.log(`this.bmiDataResult===null`);
         }
-        console.log(this.bmiDataResult);
+        
         return this.bmiDataResult.classification;
     }
     getExplanation() {
@@ -56,9 +55,7 @@ class BMIController{
     return explanation;
 }
     convertHeightImperial(height) {
-        console.log("convertHeightImperial");
-        console.log(height["feet"]);
-        console.log(height["inches"]);
+        
     const totalInches = Number(height.feet) * 12 + Number(height.inches);
 
     const heightMetric = totalInches * 2.54;
