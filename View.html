@@ -78,6 +78,10 @@
         stones: 11,
         pounds: 11
        });
+       const defaultHeightMetric=180;
+       const defaultWeigthMetric=75;
+       const defaultHeightImperial={feet:5,inches:11};
+       const defaultWeigtImperial={stones:11,pounds:11};
        
        const[metricErrors, setMetricErrors]=React.useState({height:"",weight:""});
        const[imperialErrors, setImperialErrors]=React.useState({height:"",weight:""});
@@ -100,7 +104,7 @@
 
         const myController = controllerRef.current;
 
-       function updateBMI(height, weight) {
+       function updateBMI(unit,height, weight) {
 
            const newBMI = myController.calculateBMI(unit, height, weight);
            setBmi(newBMI);
@@ -119,15 +123,15 @@
            setMaxWeight(range.max);
        }
 
-       function updateBMIData(height, weight) {
-          updateBMI(height, weight);
+       function updateBMIData(unit,height, weight) {
+          updateBMI(unit,height, weight);
           updateHealthyWeightRange();
        }
 
      
            function makeFirstValidation(){
           
-          updateBMIData(heightMetric, weightMetric);
+          updateBMIData(unit,heightMetric, weightMetric);
          
           
         }
@@ -145,7 +149,7 @@
          setHeightMetric(value);
          const newError= myController.controllMetricHeight(value);
          if(newError==="" && metricErrors.weight===""){
-          updateBMIData(value, weightMetric);
+          updateBMIData(unit,value, weightMetric);
          }
          else{
            
@@ -166,7 +170,7 @@
            setWeightMetric(value);
            const newError= myController.controllMetricWeight(value);
            if(newError==="" && metricErrors.height===""){
-                updateBMIData(heightMetric, value);
+                updateBMIData(unit,heightMetric, value);
               
            }
            else{
@@ -191,7 +195,7 @@
         const newError= myController.controllImperialHeight(newHeightImperial);
         console.log(`New error height imperial ${newError}`);
         if(newError==="" && imperialErrors.weight===""){
-          updateBMIData(newHeightImperial, weightImperial);
+          updateBMIData(unit,newHeightImperial, weightImperial);
         }
         else{
           setExplanation(defaultExplanation);
@@ -219,7 +223,7 @@
           
         const newError= myController.controllImperialWeight(newWeightImperial);
         if(newError==="" && imperialErrors.height===""){
-          updateBMIData(heightImperial,newWeightImperial) 
+          updateBMIData(unit,heightImperial,newWeightImperial) 
         }
         else{
           setExplanation(defaultExplanation);
@@ -235,23 +239,32 @@
 
         function handleChangeOfUnit(event){
           const newUnit=event.target.value;
+          if(newUnit===unit){
+            return;
+          }
+
           if(newUnit==="metric")
           {
-          updateBMIData(heightImperial, weightImperial);
-          setHeightImperial({feet:5,inches:5});
-          setWeightImperial({stones:11,pounds:11});
+          
+          setHeightImperial(defaultHeightImperial);
+          setWeightImperial(defaultWeigtImperial);
           setImperialErrors({height:"", weight:""});
+          setUnit("metric");
+          updateBMIData(newUnit,defaultHeightMetric, defaultWeigthMetric);
+          return;
           }
           if(newUnit==="imperial")
           {
-          updateBMIData(heightMetric, weightMetric);
-          setHeightMetric(170);
-          setWeightMetric(75);
-          setMetricErrors({height:"", weight:""});
           
+          setHeightMetric(defaultHeightMetric);
+          setWeightMetric(defaultWeigthMetric);
+          setMetricErrors({height:"", weight:""});
+          setUnit("imperial");
+          updateBMIData("imperial",defaultHeightImperial, defaultWeigtImperial);
+          return;
           }
           
-          setUnit(newUnit);
+          
         }
      return(
           
@@ -271,6 +284,10 @@
           errorsMetric={metricErrors}
           errorsImperial={imperialErrors}
           />  
+
+          <div className="spacer-part">
+
+          </div>
           </div> 
           <div className="big-image-explanation-part">
              <BigImageComponent 
