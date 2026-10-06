@@ -1,4 +1,4 @@
-function ComputationComponent2({unit, handleChangeOfUnit, 
+function ComputationComponent({unit, handleChangeOfUnit, 
     heightMetric, weightMetric, handleHeightChangeMetric, handleWeightChangeMetric,
     heightImperial,weightImperial,handleHeightChangeImperial,handleWeightChangeImperial,
     bmi, classification, minWeight,maxWeight, errorsMetric, errorsImperial
@@ -146,7 +146,7 @@ function ComputationComponent2({unit, handleChangeOfUnit,
              </div>
            </div>        
             )}
-            <OutputComponent2 bmi={bmi} classification={classification}
+            <OutputComponent bmi={bmi} classification={classification}
                              minWeight={minWeight} maxWeight={maxWeight} errorsMetric={errorsMetric}
                              errorsImperial={errorsImperial}/>
             </div>

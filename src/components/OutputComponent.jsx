@@ -1,4 +1,4 @@
-function OutputComponent2({
+function OutputComponent({
     bmi,
     classification,
     minWeight,
