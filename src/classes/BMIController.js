@@ -8,7 +8,7 @@ class BMIController{
         let aktHeight=height;
         let aktWeight=weight;
         
-        if(unit==="imperial"){
+        if(unit === "imperial"){
             aktHeight=this.convertHeightImperial(aktHeight);
             
             aktWeight=this.convertWeightImperial(aktWeight);
@@ -40,9 +40,7 @@ class BMIController{
 
     }
     getClassification(){
-        if(this.bmiDataResult===null){
-            console.log(`this.bmiDataResult===null`);
-        }
+       
         
         return this.bmiDataResult.classification;
     }
@@ -95,7 +93,7 @@ class BMIController{
         
       const feet=height.feet;
       const inches=height.inches;
-      console.log(`${feet}, ${inches}`);
+      
       const heightCm=this.convertHeightImperial(height);
       if (inches < 0 || inches > 11) {
          return "Inches muss be between 0 and 11";
@@ -109,9 +107,9 @@ class BMIController{
         
       const stones=weight.stones;
       const pounds=weight.pounds;
-      console.log(`${stones}, ${pounds}`);
+      
       const weightKg=this.convertWeightImperial(weight);
-      console.log(`weightKg: ${weightKg}`);
+      
       if (pounds < 0 || pounds > 13) {
          return "Pounds muss be between 0 and 13";
      }
