@@ -36,7 +36,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                 </label>
 
             </div>
-            {unit==="metric" &&
+            {unit === "metric" &&
             (
               <div className="input-part">            
                 <div className="height-input-container-metric">
@@ -44,7 +44,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                          Height
                     </p>
                     <label className={`label-for-height-input-metric 
-                          ${errorsMetric.height==="" ? "" : "error-label"}`}>
+                          ${errorsMetric.height === "" ? "" : "error-label"}`}>
                        <input
                           type="text"
                           value={heightMetric}
@@ -53,7 +53,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                           <p className="text-for-input">cm</p>
                     </label>
                    <p className={`text-in-height-input-container 
-                      ${errorsMetric.height===""? "no-error" : "error-message"}`}>
+                      ${errorsMetric.height === ""? "no-error" : "error-message"}`}>
                        {errorsMetric.height || "\u00A0"}
                    </p>
                 </div>
@@ -63,7 +63,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                          Weight
                     </p>
                     <label className={`label-for-weight-input-metric 
-                     ${errorsMetric.weight==="" ? "" : "error-label"}`}>
+                     ${errorsMetric.weight === "" ? "" : "error-label"}`}>
                         <input
                         type="text"
                         value={weightMetric}
@@ -72,7 +72,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                       <p className="text-for-input">kg</p>
                     </label>
                 <p className={`text-in-height-input-container 
-                      ${errorsMetric.weight===""? "no-error" : "error-message"}`}>
+                      ${errorsMetric.weight === ""? "no-error" : "error-message"}`}>
                       {errorsMetric.weight || "\u00A0"}
                  </p>
                </div>
@@ -86,7 +86,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                            Height
                        </p>
                    <div className={`container-for-height-imperial-input
-                       ${errorsImperial.height==="" ? "" : "error-label"}`}>
+                       ${errorsImperial.height === "" ? "" : "error-label"}`}>
                        <label className="label-for-feet-input">
                           <input
                              type="text"
@@ -119,7 +119,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                        Weight
                     </p>
                     <div className={`container-for-weight-imperial-input
-                    ${errorsImperial.weight==="" ? "" : "error-label"}`}>
+                    ${errorsImperial.weight === "" ? "" : "error-label"}`}>
                     <label className="label-for-stones-input">
                       <input
                          type="text"
