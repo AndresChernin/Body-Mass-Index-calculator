@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="src/styles/computation-component2.css">
     <link rel="stylesheet" href="src/styles/big-image-component.css">
     <link rel="stylesheet" href="src/styles/explanation-component.css">
-     <link rel="stylesheet" href="src/styles/healthy-tipps-section.css">
+     <link rel="stylesheet" href="src/styles/healthy-tips-section.css">
      <link rel="stylesheet" href="src/styles/limitations-section.css">
     
-  <link rel="stylesheet" href="/starter-code/assets/fonts/Inter-VariableFont_slnt,wght.ttf">
+  
    <link href=
     "https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;700,800&display=swap" 
     rel="stylesheet">
@@ -148,7 +148,7 @@
 
          setHeightMetric(value);
          const newError= myController.controllMetricHeight(value);
-         if(newError==="" && metricErrors.weight===""){
+         if(newError === "" && metricErrors.weight === ""){
           updateBMIData(unit,value, weightMetric);
          }
          else{
@@ -169,7 +169,7 @@
          }
            setWeightMetric(value);
            const newError= myController.controllMetricWeight(value);
-           if(newError==="" && metricErrors.height===""){
+           if(newError === "" && metricErrors.height === ""){
                 updateBMIData(unit,heightMetric, value);
               
            }
@@ -193,8 +193,8 @@
          setHeightImperial(newHeightImperial);
           
         const newError= myController.controllImperialHeight(newHeightImperial);
-        console.log(`New error height imperial ${newError}`);
-        if(newError==="" && imperialErrors.weight===""){
+        
+        if(newError === "" && imperialErrors.weight === ""){
           updateBMIData(unit,newHeightImperial, weightImperial);
         }
         else{
@@ -218,17 +218,17 @@
         ...weightImperial,
         [name]: value
     };
-       console.log(`newWeightImperial:${newWeightImperial}`)
+       
         setWeightImperial(newWeightImperial);
           
         const newError= myController.controllImperialWeight(newWeightImperial);
-        if(newError==="" && imperialErrors.height===""){
+        if(newError === "" && imperialErrors.height === ""){
           updateBMIData(unit,heightImperial,newWeightImperial) 
         }
         else{
           setExplanation(defaultExplanation);
         }
-        console.log(`New error weight imperial ${newError}`);
+        
          setImperialErrors({
         ...imperialErrors,
         weight: newError
@@ -239,11 +239,11 @@
 
         function handleChangeOfUnit(event){
           const newUnit=event.target.value;
-          if(newUnit===unit){
+          if(newUnit === unit){
             return;
           }
 
-          if(newUnit==="metric")
+          if(newUnit === "metric")
           {
           
           setHeightImperial(defaultHeightImperial);
@@ -253,7 +253,7 @@
           updateBMIData(newUnit,defaultHeightMetric, defaultWeigthMetric);
           return;
           }
-          if(newUnit==="imperial")
+          if(newUnit === "imperial")
           {
           
           setHeightMetric(defaultHeightMetric);
