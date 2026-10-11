@@ -2,7 +2,7 @@ function IntroductionComponent({logoImg}){
     return(
         <section className="introduction-part">
             <div className="introduction-part-inner-container">
-                <img src={logoImg}/>
+                <img src={logoImg} alt=""/>
                 <h1>Body Mass Index Calculator</h1>
                 <p>Better understand your weight in relation to your height using our 
                    body mass index (BM) calculator. While BMI is not the sole determinant 
