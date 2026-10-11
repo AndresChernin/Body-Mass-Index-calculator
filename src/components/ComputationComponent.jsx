@@ -40,38 +40,48 @@ function ComputationComponent({unit, handleChangeOfUnit,
             (
               <div className="input-part">            
                 <div className="height-input-container-metric">
-                    <p className="text-in-height-input-container">
+                    <label className="text-in-height-input-container"
+                    htmlFor="height-metric">
                          Height
-                    </p>
+                    </label>
                     <label className={`label-for-height-input-metric 
                           ${errorsMetric.height === "" ? "" : "error-label"}`}>
                        <input
+                          id="height-metric"
                           type="text"
                           value={heightMetric}
-                     
-                          onChange={(event)=>handleHeightChangeMetric(event)}/>
-                          <p className="text-for-input">cm</p>
+                          aria-invalid={errorsMetric.height !== ""}
+                          aria-describedby="height-metric-error"
+                          onChange={(event) => handleHeightChangeMetric(event)}
+                          />
+                          <span className="text-for-input">cm</span>
                     </label>
-                   <p className={`text-in-height-input-container 
+                   <p id="height-metric-error"
+                      className={`text-in-height-input-container 
                       ${errorsMetric.height === ""? "no-error" : "error-message"}`}>
                        {errorsMetric.height || "\u00A0"}
                    </p>
                 </div>
         
                <div className="weight-input-container-metric">
-                    <p className="text-in-weight-input-container">
+                    <label className="text-in-weight-input-container"
+                    htmlFor="weight-metric">
                          Weight
-                    </p>
+                    </label>
                     <label className={`label-for-weight-input-metric 
                      ${errorsMetric.weight === "" ? "" : "error-label"}`}>
                         <input
-                        type="text"
+                        id="weight-metric"
+                          type="text"
                         value={weightMetric}
-                     
+                     aria-invalid={errorsMetric.weight !== ""}
+                          aria-describedby="weight-metric-error"
                         onChange={(event)=>handleWeightChangeMetric(event)}/>
-                      <p className="text-for-input">kg</p>
+                      <span className="text-for-input">kg</span>
                     </label>
-                <p className={`text-in-height-input-container 
+                <p
+                id="weight-metric-error" 
+                className={`text-in-height-input-container 
                       ${errorsMetric.weight === ""? "no-error" : "error-message"}`}>
                       {errorsMetric.weight || "\u00A0"}
                  </p>
@@ -82,30 +92,42 @@ function ComputationComponent({unit, handleChangeOfUnit,
             {unit==="imperial" &&(
               <div className="input-part">  
                    <div className={`height-input-container-imperial`}>
-                       <p className="text-in-height-input-container">
+                       <label className="text-in-height-input-container">
                            Height
-                       </p>
+                       </label>
                    <div className={`container-for-height-imperial-input
                        ${errorsImperial.height === "" ? "" : "error-label"}`}>
-                       <label className="label-for-feet-input">
+                       <label
+                       htmlFor="height-feet" 
+                       className="label-for-feet-input">
                           <input
-                             type="text"
-                             inputMode="numeric"
-                             name="feet"
-                             min="0"
-                             value={heightImperial.feet}
-                     
-                            onChange={handleHeightChangeImperial}/>
-                          <p className="text-for-input">ft</p>
+                           id="height-feet" 
+                           type="text" 
+                           inputMode="numeric"
+                            name="feet" 
+                            value={heightImperial.feet} 
+                            aria-invalid={errorsImperial.height !== ""} 
+                            aria-describedby="height-imperial-error" 
+                            onChange={handleHeightChangeImperial}  
+                           />
+                          <span className="text-for-input">ft</span>
                         </label>
-                        <label className="label-for-inches-input">
+                        <label
+                        htmlFor="height-inches" 
+                        className="label-for-inches-input">
                              <input
-                                type="text"
-                                name="inches"
-                                value={heightImperial.inches}
-                                onChange={handleHeightChangeImperial}/>
-                            <p className="text-for-input">in</p>
-                        </label>
+                                 
+                                id="height-inches"
+                                 type="text"
+                                  inputMode="numeric"
+                                   name="inches" 
+                                   value={heightImperial.inches} 
+                                   aria-invalid={errorsImperial.height !== ""} 
+                                   aria-describedby="height-imperial-error" 
+                                   onChange={handleHeightChangeImperial} 
+                                   />
+                               <span className="text-for-input">in</span> 
+                         </label>           
                    </div>
                    <p className={`error-message ${
                         errorsImperial.height === "" ? "no-error" : ""}`}>
@@ -115,31 +137,45 @@ function ComputationComponent({unit, handleChangeOfUnit,
             
             
                 <div className="weight-input-container-imperial">
-                    <p className="text-in-height-input-container">
+                    <label className="text-in-height-input-container">
                        Weight
-                    </p>
+                    </label>
                     <div className={`container-for-weight-imperial-input
                     ${errorsImperial.weight === "" ? "" : "error-label"}`}>
-                    <label className="label-for-stones-input">
+                    <label
+                    htmlFor="weight-stones" 
+                    className="label-for-stones-input">
                       <input
-                         type="text"
-                         name="stones"
-                         value={weightImperial.stones}
-                         onChange={(event)=>handleWeightChangeImperial(event)}
+                        id="weight-stones" 
+                        type="text" 
+                        inputMode="numeric"
+                         name="stones" 
+                        value={weightImperial.stones}
+                        aria-invalid={errorsImperial.weight !== ""} 
+                        aria-describedby="weight-imperial-error" 
+                        onChange={handleWeightChangeImperial}
                       />
                     <p className="text-for-input">st</p>
                    </label>
-                   <label className="label-for-pounds-input">
+                   <label
+                   htmlFor="weight-pounds" 
+                   className="label-for-pounds-input">
                       <input
-                          type="text"
-                          name="pounds"
-                          value={weightImperial.pounds}
-                          onChange={(event)=>handleWeightChangeImperial(event)}
+                          id="weight-pounds"
+                           type="text"
+                            inputMode="numeric" 
+                            name="pounds"
+                             value={weightImperial.pounds}
+                              aria-invalid={errorsImperial.weight !== ""} 
+                              aria-describedby="weight-imperial-error" 
+                              onChange={handleWeightChangeImperial}
                        />
-                    <p className="text-for-input">lbs</p>
+                    <span className="text-for-input">lbs</span>
                   </label>
                 </div>
-                <p className={`error-message ${
+                <p
+                id="weight-imperial-error" 
+                className={`error-message ${
                    errorsImperial.weight === "" ? "no-error" : ""}`}>
                    {errorsImperial.weight || "\u00A0"}
                 </p>
