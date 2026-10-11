@@ -1,117 +1,63 @@
-# Frontend Mentor - Body Mass Index Calculator
+BMI Calculator
+Overview
 
-![Design preview for the Body Mass Index Calculator coding challenge](./preview.jpg)
+This project is a Body Mass Index (BMI) calculator that allows users to enter their body measurements and calculate their BMI. It also provides information about BMI and helps users understand the meaning of the calculated result.
 
-## Welcome! 👋
+The project was developed in several phases, starting with the basic user interface and gradually improving the structure, functionality, and presentation of the application.
 
-Thanks for purchasing this premium Frontend Mentor coding challenge.
+Development Process
+Phase 1: Introduction and BMI Calculation
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects. These premium challenges are perfect portfolio pieces, so please feel free to use what you create in your portfolio to show others.
+I created the IntroductionComponent to explain what BMI is and provide users with basic information about its purpose.
 
-**To do this challenge, you need a strong understanding of HTML, CSS, and JavaScript.**
+I also developed the ComputationComponent, which handles both the input of the user's body measurements and the display of the calculated BMI. This established the core functionality of the application and provided the foundation for further development.
 
-## The challenge
+Phase 2: BMI Model and Controller
 
-Your challenge is to build out this body mass index calculator page and get it looking as close to the design as possible.
+In this phase, I focused on implementing the BMI calculation logic and connecting it to the user interface.
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+The main goals of the project were to allow users to:
 
-Your users should be able to:
+Choose between metric and imperial units.
+Enter their height and weight.
+View their calculated BMI, weight classification, and healthy weight range.
+Use a responsive interface adapted to different screen sizes.
+See hover and focus states on all interactive elements.
 
-- Select whether they want to use metric or imperial units
-- Enter their height and weight
-- See their BMI result, with their weight classification and healthy weight range
-- View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
+To achieve these goals, I developed two main classes: BMIModel and BMIController.
 
-### Want some support on the challenge?
+The BMIModel is responsible for processing the user's measurements and providing the relevant BMI information. In addition to calculating the BMI from height and weight, it uses a data object containing the healthy weight ranges, BMI classifications, and explanations associated with the calculated result. This allows the application to display not only a numerical value but also additional information to help users understand their results.
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+The BMIController connects the view and the model. Whenever the user changes an input, the controller checks whether the input is valid and determines whether the user is working with metric or imperial units. It then passes the validated measurements to the model.
 
-### Expected behaviour
+The model returns the calculated BMI, its classification, and the corresponding explanation. The controller then passes this information back to the view, where the result is displayed to the user.
 
-Below you will find the BMI ranges and their weight classifications. Based on the person's BMI results, add their weight classification to the sentence "Your BMI suggests you’re" within the results component.
+Separating these responsibilities made the application easier to understand, maintain, and extend.
 
-- Underweight: BMI less than 18.5
-- Healthy weight: BMI 18.5 to 24.9
-- Overweight: BMI 25 to 29.9
-- Obese: BMI 30 or greater
+Phase 3: BMI Results and Explanations
 
-Add the individual's healthy weight range based on the lower and upper BMI categorisations and the person's height.
+In this phase, I improved the presentation of the BMI results by adding an image of a happy man to make the interface more engaging and visually appealing.
 
-## Where to find everything
+I also implemented the display of explanations for the calculated BMI. Instead of showing only the numerical result and weight classification, the application provides additional information to help users understand what their BMI result means.
 
-Your task is to build out the project to the design file provided. You can download the Figma design file on the platform. You can download the design file on the platform. **Please be sure not to share them with anyone else.** The design download comes with a `README.md` file as well to help you get set up.
+This made the results section more informative and user-friendly.
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized. Some are reusable at multiple screen sizes. So if you don't see an image in a specific folder, it will typically be in another folder for that page.
+Phase 4: Healthy Tips and BMI Limitations
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+In the final phase, I added a section with tips for maintaining a healthy BMI and another section explaining the limitations of BMI as a health indicator.
 
-The design system in the design file will give you more information about the various colors, fonts, and styles used in this project. Our fonts always come from [Google Fonts](https://fonts.google.com/).
+To keep the content separate from the presentation logic, I created dedicated data files for the healthy tips and BMI limitations. The corresponding components use these data files to display the information in the interface.
 
-## Using AI coding assistants
+This approach made the content easier to organize, maintain, and update without having to modify the component code itself.
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+Challenges and Future Development
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+During development, I faced several challenges.
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+One challenge was making the bottom part of the IntroductionComponent overlap with the ComputationComponent as intended. I was unable to achieve the desired layout.
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+I also struggled to implement a responsive desktop layout for the LimitationSection because I did not fully understand the required structure and how to organize the layout correctly.
 
-## Building your project
+I would like to improve these areas in the future, deepen my understanding of responsive web design, and make the layout work as intended across different screen sizes.
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
-
-1. Separate the `starter-code` from the rest of this project and rename it to something meaningful for you. Initialize the codebase as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/). **⚠️ IMPORTANT ⚠️: There are already a couple of `.gitignore` files in this project. Please do not remove them or change the content of the files. If you create a brand new project, please use the `.gitignore` files provided in your new codebase. This is to avoid the accidental upload of the design files to GitHub. With these premium challenges, please be sure not to share the design files in your GitHub repo. Thanks!**
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
-
-## Deploying your project
-
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
-
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
-
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
-
-## Create a custom `README.md`
-
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
-
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
-
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
-
-## Submitting your solution
-
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
-
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
-
-**⚠️ IMPORTANT ⚠️: With these premium challenges, please be sure not to upload the design files to GitHub when you're submitting to the platform and sharing it around. If you've created a brand new project, the easiest way to do that is to copy across the `.gitignore` provided in this starter project.**
-
-## Sharing your solution
-
-There are multiple places you can share your solution:
-
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
-
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
-
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
-
-## Got feedback for us?
-
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-**Have fun building!** 🚀
+If anyone has suggestions or could help me understand how to solve these layout issues, I would really appreciate it. Thank you for your time and support!
