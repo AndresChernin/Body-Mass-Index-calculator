@@ -42,11 +42,12 @@ function ComputationComponent({unit, handleChangeOfUnit,
                 <div className="height-input-container-metric">
                     <label className="text-in-height-input-container"
                     htmlFor="height-metric">
-                         Height
+                         Height 
+                    <span className="visually-hidden"> Height in centimeters </span>
                     </label>
                     <div className={`label-for-height-input-metric 
                           ${errorsMetric.height === "" ? "" : "error-label"}`}>
-                            <span className="visually-hidden"> Height in centimeters </span>
+                           
                        <input
                           id="height-metric"
                           type="text"
@@ -68,10 +69,11 @@ function ComputationComponent({unit, handleChangeOfUnit,
                     <label className="text-in-weight-input-container"
                     htmlFor="weight-metric">
                          Weight
+                    <span className="visually-hidden"> Weight in kilos </span>
                     </label>
                     <div className={`label-for-weight-input-metric 
                      ${errorsMetric.weight === "" ? "" : "error-label"}`}>
-                      <span className="visually-hidden"> Weight in kilos </span>
+                      
                         <input
                         id="weight-metric"
                           type="text"
