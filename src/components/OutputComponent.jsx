@@ -11,7 +11,9 @@ function OutputComponent({
         errorsMetric.weight !== "";
 
     return (
-        <div className={`output-part ${hasErrors ? "output-error" : ""}`}>
+        <div className={`output-part ${hasErrors ? "output-error" : ""}`}
+        aria-live="polite" aria-atomic="true"
+        >
 
             {hasErrors ? (
                 <>
