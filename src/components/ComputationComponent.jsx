@@ -7,8 +7,8 @@ function ComputationComponent({unit, handleChangeOfUnit,
         <section className="computation-part">
             <div className="computation-part-inner-container">
             <h1 className="h1-for-computation-part">Enter your details below</h1>
-            <div className="computation-part-metric-or-imperial-part">
-                
+            <fieldset className="computation-part-metric-or-imperial-part">
+                <legend>Units</legend>
                 <label className="metric-part">
                     
                         <input
@@ -35,7 +35,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                         <p className="text-in-metric-or-imperial-part">Imperial</p>
                 </label>
 
-            </div>
+            </fieldset>
             {unit === "metric" &&
             (
               <div className="input-part">            
@@ -46,6 +46,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                     </label>
                     <div className={`label-for-height-input-metric 
                           ${errorsMetric.height === "" ? "" : "error-label"}`}>
+                            <span className="visually-hidden"> Height in centimeters </span>
                        <input
                           id="height-metric"
                           type="text"
@@ -68,8 +69,9 @@ function ComputationComponent({unit, handleChangeOfUnit,
                     htmlFor="weight-metric">
                          Weight
                     </label>
-                    <label className={`label-for-weight-input-metric 
+                    <div className={`label-for-weight-input-metric 
                      ${errorsMetric.weight === "" ? "" : "error-label"}`}>
+                      <span className="visually-hidden"> Weight in kilos </span>
                         <input
                         id="weight-metric"
                           type="text"
@@ -78,7 +80,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                           aria-describedby="weight-metric-error"
                         onChange={(event)=>handleWeightChangeMetric(event)}/>
                       <span className="text-for-input">kg</span>
-                    </label>
+                    </div>
                 <p
                 id="weight-metric-error" 
                 className={`text-in-height-input-container 
@@ -100,6 +102,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                        <label
                        htmlFor="height-feet" 
                        className="label-for-feet-input">
+                        <span className="visually-hidden"> Height in feet </span>
                           <input
                            id="height-feet" 
                            type="text" 
@@ -115,6 +118,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                         <label
                         htmlFor="height-inches" 
                         className="label-for-inches-input">
+                        <span className="visually-hidden"> Height in inches </span>
                              <input
                                  
                                 id="height-inches"
@@ -146,6 +150,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                     <label
                     htmlFor="weight-stones" 
                     className="label-for-stones-input">
+                      <span className="visually-hidden"> Weight in stones </span>
                       <input
                         id="weight-stones" 
                         type="text" 
@@ -161,6 +166,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                    <label
                    htmlFor="weight-pounds" 
                    className="label-for-pounds-input">
+                    <span className="visually-hidden"> Weight in pounds </span>
                       <input
                           id="weight-pounds"
                            type="text"
