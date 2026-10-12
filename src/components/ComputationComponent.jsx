@@ -46,6 +46,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                     </label>
                     <div className={`label-for-height-input-metric 
                           ${errorsMetric.height === "" ? "" : "error-label"}`}>
+                            <span className="visually-hidden"> Height in centimeters </span>
                        <input
                           id="height-metric"
                           type="text"
@@ -70,6 +71,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                     </label>
                     <div className={`label-for-weight-input-metric 
                      ${errorsMetric.weight === "" ? "" : "error-label"}`}>
+                      <span className="visually-hidden"> Weight in kilos </span>
                         <input
                         id="weight-metric"
                           type="text"
@@ -100,6 +102,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                        <label
                        htmlFor="height-feet" 
                        className="label-for-feet-input">
+                        <span className="visually-hidden"> Height in feet </span>
                           <input
                            id="height-feet" 
                            type="text" 
@@ -115,6 +118,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                         <label
                         htmlFor="height-inches" 
                         className="label-for-inches-input">
+                        <span className="visually-hidden"> Height in inches </span>
                              <input
                                  
                                 id="height-inches"
@@ -146,6 +150,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                     <label
                     htmlFor="weight-stones" 
                     className="label-for-stones-input">
+                      <span className="visually-hidden"> Weight in stones </span>
                       <input
                         id="weight-stones" 
                         type="text" 
@@ -161,6 +166,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                    <label
                    htmlFor="weight-pounds" 
                    className="label-for-pounds-input">
+                    <span className="visually-hidden"> Weight in pounds </span>
                       <input
                           id="weight-pounds"
                            type="text"
