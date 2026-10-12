@@ -90,6 +90,10 @@ border: 0.188rem solid var(--gray-blue-text);
 .computation-part-metric-or-imperial-part input:checked + span:hover::after {
    background-color: var(--blue-text-2); 
 }
+.computation-part-metric-or-imperial-part input:focus-visible + span { 
+    outline: 2px solid #345ff6; 
+    outline-offset: 4px;
+ }
 .text-in-metric-or-imperial-part{
     font-size: 1.563rem;
     color:var(--dark-blue-text);
@@ -252,4 +256,12 @@ border: 0.188rem solid var(--gray-blue-text);
 }
 .spacer-part{
     height: clamp(30rem, 75vw, 50rem);
+}
+.label-for-height-input-metric input:focus-visible, 
+.label-for-weight-input-metric input:focus-visible,
+ .label-for-feet-input input:focus-visible,
+  .label-for-inches-input input:focus-visible, 
+  .label-for-stones-input input:focus-visible, 
+  .label-for-pounds-input input:focus-visible { 
+    outline: 2px solid #345ff6; outline-offset: 2px; 
 }
