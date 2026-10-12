@@ -7,8 +7,8 @@ function ComputationComponent({unit, handleChangeOfUnit,
         <section className="computation-part">
             <div className="computation-part-inner-container">
             <h1 className="h1-for-computation-part">Enter your details below</h1>
-            <div className="computation-part-metric-or-imperial-part">
-                
+            <fieldset className="computation-part-metric-or-imperial-part">
+                <legend>Units</legend>
                 <label className="metric-part">
                     
                         <input
@@ -35,7 +35,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                         <p className="text-in-metric-or-imperial-part">Imperial</p>
                 </label>
 
-            </div>
+            </fieldset>
             {unit === "metric" &&
             (
               <div className="input-part">            

@@ -37,7 +37,7 @@
     font-size:2.188rem;
 }
 .computation-part-metric-or-imperial-part{
-   
+    border: none;
     width:100%;
     display:flex;
 
