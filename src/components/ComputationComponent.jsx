@@ -68,7 +68,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                     htmlFor="weight-metric">
                          Weight
                     </label>
-                    <label className={`label-for-weight-input-metric 
+                    <div className={`label-for-weight-input-metric 
                      ${errorsMetric.weight === "" ? "" : "error-label"}`}>
                         <input
                         id="weight-metric"
@@ -78,7 +78,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                           aria-describedby="weight-metric-error"
                         onChange={(event)=>handleWeightChangeMetric(event)}/>
                       <span className="text-for-input">kg</span>
-                    </label>
+                    </div>
                 <p
                 id="weight-metric-error" 
                 className={`text-in-height-input-container 
