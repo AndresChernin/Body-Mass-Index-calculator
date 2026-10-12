@@ -12,9 +12,9 @@ function OutputComponent({
 
     return (
         <div className={`output-part ${hasErrors ? "output-error" : ""}`}
-        aria-live="polite" aria-atomic="true"
         >
-
+        
+            <p className="visually-hidden" role="status" aria-atomic="true" ></p>
             {hasErrors ? (
                 <>
                     <p className="middle-width-text">
