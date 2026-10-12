@@ -14,7 +14,11 @@ function OutputComponent({
         <div className={`output-part ${hasErrors ? "output-error" : ""}`}
         >
         
-            <p className="visually-hidden" role="status" aria-atomic="true" ></p>
+            <p className="visually-hidden" role="status" aria-atomic="true" >
+
+              {hasErrors ? "Please check your details." : bmi ? `Your BMI is ${bmi}.` : ""}
+
+            </p>
             {hasErrors ? (
                 <>
                     <p className="middle-width-text">
