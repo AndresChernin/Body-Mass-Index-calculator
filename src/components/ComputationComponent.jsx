@@ -44,7 +44,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                     htmlFor="height-metric">
                          Height
                     </label>
-                    <label className={`label-for-height-input-metric 
+                    <div className={`label-for-height-input-metric 
                           ${errorsMetric.height === "" ? "" : "error-label"}`}>
                        <input
                           id="height-metric"
@@ -55,7 +55,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                           onChange={(event) => handleHeightChangeMetric(event)}
                           />
                           <span className="text-for-input">cm</span>
-                    </label>
+                    </div>
                    <p id="height-metric-error"
                       className={`text-in-height-input-container 
                       ${errorsMetric.height === ""? "no-error" : "error-message"}`}>
@@ -129,7 +129,8 @@ function ComputationComponent({unit, handleChangeOfUnit,
                                <span className="text-for-input">in</span> 
                          </label>           
                    </div>
-                   <p className={`error-message ${
+                   <p id="height-imperial-error"
+                   className={`error-message ${
                         errorsImperial.height === "" ? "no-error" : ""}`}>
                        {errorsImperial.height || "\u00A0"}
                    </p>
