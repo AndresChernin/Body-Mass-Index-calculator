@@ -25,7 +25,7 @@ function OutputComponent({
                         Please check your details
                     </p>
 
-                    <h1>Invalid input</h1>
+                    <h2>Invalid input</h2>
 
                    
                 </>
