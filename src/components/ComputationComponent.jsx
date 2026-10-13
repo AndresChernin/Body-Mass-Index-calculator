@@ -6,7 +6,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
     return(
         <section className="computation-part">
             <div className="computation-part-inner-container">
-            <h1 className="h1-for-computation-part">Enter your details below</h1>
+            <h2 className="h1-for-computation-part">Enter your details below</h2>
             <fieldset className="computation-part-metric-or-imperial-part">
                 <legend>Units</legend>
                 <label className="metric-part">

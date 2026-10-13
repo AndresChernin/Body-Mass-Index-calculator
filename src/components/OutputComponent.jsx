@@ -35,7 +35,7 @@ function OutputComponent({
                         Your BMI is
                     </p>
 
-                    <h1>{bmi}</h1>
+                    <h3>{bmi}</h3>
 
                     <p>
                         Your BMI suggests you're {classification}.
