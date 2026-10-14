@@ -11,14 +11,20 @@ function OutputComponent({
         errorsMetric.weight !== "";
 
     return (
-        <div className={`output-part ${hasErrors ? "output-error" : ""}`}
-        >
+        <div className={`output-part ${hasErrors ? "output-error" : ""}`}>
         
-            <p className="visually-hidden" role="status" aria-atomic="true" >
-
-              {hasErrors ? "Please check your details." : bmi ? `Your BMI is ${bmi}.` : ""}
-
-            </p>
+            <p
+             className="visually-hidden"
+             role="status"
+             aria-atomic="true"
+             >
+            {hasErrors? 
+              "Please check your details."
+              : bmi
+              ? `Your BMI is ${bmi}. Your BMI suggests you're ${classification}. 
+                 Your ideal weight is between ${minWeight} and ${maxWeight} kilograms.`
+             : ""}
+</p>
             {hasErrors ? (
                 <>
                     <p className="middle-width-text">
