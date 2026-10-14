@@ -111,7 +111,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                            inputMode="numeric"
                             name="feet" 
                             value={heightImperial.feet} 
-                            aria-invalid={errorsImperial.height !== ""} 
+                            
                             aria-describedby="height-imperial-error" 
                             onChange={handleHeightChangeImperial}  
                            />
@@ -128,7 +128,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                                   inputMode="numeric"
                                    name="inches" 
                                    value={heightImperial.inches} 
-                                   aria-invalid={errorsImperial.height !== ""} 
+                                    
                                    aria-describedby="height-imperial-error" 
                                    onChange={handleHeightChangeImperial} 
                                    />
@@ -159,7 +159,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                         inputMode="numeric"
                          name="stones" 
                         value={weightImperial.stones}
-                        aria-invalid={errorsImperial.weight !== ""} 
+                         
                         aria-describedby="weight-imperial-error" 
                         onChange={handleWeightChangeImperial}
                       />
@@ -175,7 +175,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                             inputMode="numeric" 
                             name="pounds"
                              value={weightImperial.pounds}
-                              aria-invalid={errorsImperial.weight !== ""} 
+                              
                               aria-describedby="weight-imperial-error" 
                               onChange={handleWeightChangeImperial}
                        />
