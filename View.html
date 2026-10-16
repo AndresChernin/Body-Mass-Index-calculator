@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI calculator</title>
+  
+   
+    <link rel="stylesheet" href="src/styles/main-container.css">
+    <link rel="stylesheet" href="src/styles/output-component.css">
+    <link rel="stylesheet" href="src/styles/introduction-component.css">
+    <link rel="stylesheet" href="src/styles/computation-component.css">
+    <link rel="stylesheet" href="src/styles/computation-component2.css">
+    <link rel="stylesheet" href="src/styles/big-image-component.css">
+    <link rel="stylesheet" href="src/styles/explanation-component.css">
+     <link rel="stylesheet" href="src/styles/healthy-tips-section.css">
+     <link rel="stylesheet" href="src/styles/limitations-section.css">
+    
+  
+   <link href=
+    "https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;700,800&display=swap" 
+    rel="stylesheet">
+    <link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap"
+  rel="stylesheet"
+>
+<link
+    href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;700;750;780;800&display=swap"
+    rel="stylesheet"
+>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    
+  </head>
+  <body>
+    
+    <div id="root"></div>
+    
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    
+    <script src="src/components/IntroductionComponent.jsx" type="text/babel"></script>
+    
+    <script src="src/components/ComputationComponent.jsx" type="text/babel"></script>      
+   
+   <script src="src/components/OutputComponent.jsx" type="text/babel"></script>
+   <script src="src/components/BigImageComponent.jsx" type="text/babel"></script>
+   <script src="src/components/ExplanationComponent.jsx" type="text/babel"></script>
+   <script src="src/components/HealthyTipsSection.jsx" type="text/babel"></script>
+   <script src="src/components/HealthyTip.jsx" type="text/babel"></script>
+   <script src="src/components/LimitationsSection.jsx" type="text/babel"></script>
+   <script src="src/components/LimitationComponent.jsx" type="text/babel"></script>
+   <script src="src/classes/BMIController.js" type="text/babel"></script>
+   <script src="src/classes/BMIModel.js" type="text/babel"></script>
+   <script src="src/data/data.js" type="text/babel"></script>
+   <script src="src/data/healthyData.js" type="text/babel"></script>
+   <script src="src/data/limitationsData.js" type="text/babel"></script>
+    <script type="text/babel">
+      
+
+
+       function App()
+       {
+        const [unit, setUnit]=React.useState("metric");
+        const [heightMetric, setHeightMetric] = React.useState(180);
+        const [weightMetric, setWeightMetric] = React.useState(75);
+
+        const [heightImperial, setHeightImperial] = React.useState({
+        feet: 5,
+        inches: 11
+        });
+
+        const [weightImperial, setWeightImperial] = React.useState({
+        stones: 11,
+        pounds: 11
+       });
+       const defaultHeightMetric=180;
+       const defaultWeigthMetric=75;
+       const defaultHeightImperial={feet:5,inches:11};
+       const defaultWeigtImperial={stones:11,pounds:11};
+       
+       const[metricErrors, setMetricErrors]=React.useState({height:"",weight:""});
+       //const[imperialErrors, setImperialErrors]=React.useState({height:"",weight:""});
+       const[imperialHeightErrors, setImperialHeightErrors]=React.useState({feet:"", inches:""});
+ 
+       const[imperialWeightErrors, setImperialWeightErrors]=React.useState({stones:"", pounds:""});
+       const defaultExplanation="BMI ∈[18.5, 24.9] means you are a healthy weight." 
+           +"BMI > 25 means you are overweigt . BMI < 18.5 means you are underwieght";
+       const [bmi,setBmi]=React.useState(22.4);
+       const[minWeight, setMinWeight]=React.useState(63.3);
+       const[maxWeight, setMaxWeight]=React.useState(85.2);
+       const[classification, setClassification]=React.useState("a healthy weight"); 
+       const[explanation, setExplanation]=React.useState("");
+       const controllerRef=React.useRef(null);
+       
+        if (controllerRef.current === null) {
+            const bmiModel = new BMIModel(data);
+            
+            
+            controllerRef.current = new BMIController(bmiModel);
+            
+        }
+
+        const myController = controllerRef.current;
+
+       function updateBMI(unit,height, weight) {
+
+           const newBMI = myController.calculateBMI(unit, height, weight);
+           setBmi(newBMI);
+           myController.setBMI(newBMI);
+           myController.setBMIData();
+
+           setClassification(myController.getClassification());
+           setExplanation(myController.getExplanation());
+       }
+
+       function updateHealthyWeightRange() {
+           
+           const range =myController.calculateHealthyWeightRange();
+          
+           setMinWeight(range.min);
+           setMaxWeight(range.max);
+       }
+
+       function updateBMIData(unit,height, weight) {
+          updateBMI(unit,height, weight);
+          updateHealthyWeightRange();
+       }
+
+     
+           function makeFirstValidation(){
+          
+          updateBMIData(unit,heightMetric, weightMetric);
+         
+          
+        }
+         React.useEffect(() => {
+        makeFirstValidation();
+    }, []);
+        
+        function handleHeightChangeMetric(event) {
+         const value = event.target.value;
+
+         if (myController.containsWrongSymbols(value) || myController.containsNegativeValues(value)) {
+              return;
+         }
+
+         setHeightMetric(value);
+         const newError= myController.controllMetricHeight(value);
+         if(newError === "" && metricErrors.weight === ""){
+          updateBMIData(unit,value, weightMetric);
+         }
+         else{
+           
+           setExplanation(defaultExplanation);
+         }
+         setMetricErrors({
+             ...metricErrors,
+             "height": newError
+             });
+        }
+
+        function handleWeightChangeMetric(event) {
+          const value = event.target.value;
+
+         if (myController.containsWrongSymbols(value) || myController.containsNegativeValues(value)) {
+              return;
+         }
+           setWeightMetric(value);
+           const newError= myController.controllMetricWeight(value);
+           if(newError === "" && metricErrors.height === ""){
+                updateBMIData(unit,heightMetric, value);
+              
+           }
+           else{
+            setExplanation(defaultExplanation);
+           }
+         setMetricErrors({
+             ...metricErrors,
+             "weight": newError
+             });
+        }
+        function handleHeightChangeImperial(event) {
+        const { name, value } = event.target;
+        if (myController.containsWrongSymbols(value) || myController.containsNegativeValues(value)) {
+              return;
+         }
+         const newHeightImperial = {
+        ...heightImperial,
+        [name]: value
+       };
+         setHeightImperial(newHeightImperial);
+          
+        
+        const newImperialHeightErrors= myController.controllImperialHeight(newHeightImperial);
+        
+        if(newImperialHeightErrors.feet === "" && newImperialHeightErrors.inches===""&&
+          imperialWeightErrors.stones==="" && imperialWeightErrors.pounds===""){
+          updateBMIData(unit,newHeightImperial, weightImperial);
+        }
+        else{
+          setExplanation(defaultExplanation);
+        }
+         
+          setImperialHeightErrors(newImperialHeightErrors );
+        
+       
+        }
+
+       
+
+        function handleWeightChangeImperial(event) {
+         const { name, value } = event.target;
+         if (myController.containsWrongSymbols(value) || myController.containsNegativeValues(value)) {
+              return;
+         }
+         const newWeightImperial = {
+        ...weightImperial,
+        [name]: value
+    };
+       
+        setWeightImperial(newWeightImperial);
+          
+        
+        const newImperialWeightErrors= myController.controllImperialWeight(newWeightImperial);
+        
+        if(newImperialWeightErrors.stones==="" &&newImperialWeightErrors.pounds===""
+         && imperialHeightErrors.feet === "" & imperialHeightErrors.inches===""){
+          updateBMIData(unit,heightImperial,newWeightImperial) 
+        }
+        else{
+          setExplanation(defaultExplanation);
+        }
+        
+        
+          setImperialWeightErrors(newImperialWeightErrors);
+         
+        
+      }
+
+        function handleChangeOfUnit(event){
+          const newUnit=event.target.value;
+          if(newUnit === unit){
+            return;
+          }
+
+          if(newUnit === "metric")
+          {
+          
+          setHeightImperial(defaultHeightImperial);
+          setWeightImperial(defaultWeigtImperial);
+          setImperialHeightErrors({feet:"", inches:""});
+          setImperialWeightErrors({stones:"", pounds:""});
+
+          setUnit("metric");
+          updateBMIData(newUnit,defaultHeightMetric, defaultWeigthMetric);
+          return;
+          }
+          if(newUnit === "imperial")
+          {
+          
+          setHeightMetric(defaultHeightMetric);
+          setWeightMetric(defaultWeigthMetric);
+          setMetricErrors({height:"", weight:""});
+          setImperialHeightErrors({feet:"", inches:""});
+          setImperialWeightErrors({stones:"", pounds:""});
+          setUnit("imperial");
+          updateBMIData("imperial",defaultHeightImperial, defaultWeigtImperial);
+          return;
+          }
+          
+          
+        }
+     return(
+          
+          <main className={`main-container` }>
+          <div className={`upper-part`}>
+          <IntroductionComponent logoImg="starter-code/assets/images/logo.svg"/>         
+          <ComputationComponent 
+          unit={unit} handleChangeOfUnit={handleChangeOfUnit}
+          heightMetric={heightMetric} weightMetric={weightMetric}
+          handleHeightChangeMetric={handleHeightChangeMetric}
+          handleWeightChangeMetric={handleWeightChangeMetric}
+          heightImperial={heightImperial} weightImperial={weightImperial}
+          handleHeightChangeImperial={handleHeightChangeImperial}
+          handleWeightChangeImperial={handleWeightChangeImperial}
+          bmi={bmi} classification={classification}
+          minWeight={minWeight} maxWeight={maxWeight} 
+          errorsMetric={metricErrors}
+          imperialHeightErrors={imperialHeightErrors}
+          imperialWeightErrors={imperialWeightErrors}
+          />  
+
+          <div className="spacer-part">
+
+          </div>
+          </div> 
+          <div className="big-image-explanation-part">
+             <BigImageComponent 
+                  bigImageLink="starter-code/assets/images/image-man-eating.webp" /> 
+             <ExplanationComponent explanation={explanation} />
+           </div>  
+          <HealthyTipsSection healthyData={healthyData} />
+          <LimitationsSection data={limitationsData} />               
+          </main>
+         )      
+         
+       }
+      const container = document.querySelector('#root');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
