@@ -84,7 +84,10 @@
        const defaultWeigtImperial={stones:11,pounds:11};
        
        const[metricErrors, setMetricErrors]=React.useState({height:"",weight:""});
-       const[imperialErrors, setImperialErrors]=React.useState({height:"",weight:""});
+       //const[imperialErrors, setImperialErrors]=React.useState({height:"",weight:""});
+       const[imperialHeightErrors, setImperialHeightErrors]=React.useState({feet:"", inches:""});
+ 
+       const[imperialWeightErrors, setImperialWeightErrors]=React.useState({stones:"", pounds:""});
        const defaultExplanation="BMI ∈[18.5, 24.9] means you are a healthy weight." 
            +"BMI > 25 means you are overweigt . BMI < 18.5 means you are underwieght";
        const [bmi,setBmi]=React.useState(22.4);
@@ -192,18 +195,19 @@
        };
          setHeightImperial(newHeightImperial);
           
-        const newError= myController.controllImperialHeight(newHeightImperial);
         
-        if(newError === "" && imperialErrors.weight === ""){
+        const newImperialHeightErrors= myController.controllImperialHeight(newHeightImperial);
+        
+        if(newImperialHeightErrors.feet === "" && newImperialHeightErrors.inches===""&&
+          imperialWeightErrors.stones==="" && imperialWeightErrors.pounds===""){
           updateBMIData(unit,newHeightImperial, weightImperial);
         }
         else{
           setExplanation(defaultExplanation);
         }
-         setImperialErrors({
-        ...imperialErrors,
-        height: newError
-       });
+         
+          setImperialHeightErrors(newImperialHeightErrors );
+        
        
         }
 
@@ -221,21 +225,22 @@
        
         setWeightImperial(newWeightImperial);
           
-        const newError= myController.controllImperialWeight(newWeightImperial);
-        if(newError === "" && imperialErrors.height === ""){
+        
+        const newImperialWeightErrors= myController.controllImperialWeight(newWeightImperial);
+        
+        if(newImperialWeightErrors.stones==="" &&newImperialWeightErrors.pounds===""
+         && imperialHeightErrors.feet === "" & imperialHeightErrors.inches===""){
           updateBMIData(unit,heightImperial,newWeightImperial) 
         }
         else{
           setExplanation(defaultExplanation);
         }
         
-         setImperialErrors({
-        ...imperialErrors,
-        weight: newError
-       });
+        
+          setImperialWeightErrors(newImperialWeightErrors);
          
-        }
-     
+        
+      }
 
         function handleChangeOfUnit(event){
           const newUnit=event.target.value;
@@ -248,7 +253,9 @@
           
           setHeightImperial(defaultHeightImperial);
           setWeightImperial(defaultWeigtImperial);
-          setImperialErrors({height:"", weight:""});
+          setImperialHeightErrors({feet:"", inches:""});
+          setImperialWeightErrors({stones:"", pounds:""});
+
           setUnit("metric");
           updateBMIData(newUnit,defaultHeightMetric, defaultWeigthMetric);
           return;
@@ -259,6 +266,8 @@
           setHeightMetric(defaultHeightMetric);
           setWeightMetric(defaultWeigthMetric);
           setMetricErrors({height:"", weight:""});
+          setImperialHeightErrors({feet:"", inches:""});
+          setImperialWeightErrors({stones:"", pounds:""});
           setUnit("imperial");
           updateBMIData("imperial",defaultHeightImperial, defaultWeigtImperial);
           return;
@@ -282,7 +291,8 @@
           bmi={bmi} classification={classification}
           minWeight={minWeight} maxWeight={maxWeight} 
           errorsMetric={metricErrors}
-          errorsImperial={imperialErrors}
+          imperialHeightErrors={imperialHeightErrors}
+          imperialWeightErrors={imperialWeightErrors}
           />  
 
           <div className="spacer-part">

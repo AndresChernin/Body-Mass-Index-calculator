@@ -1,8 +1,18 @@
 function ComputationComponent({unit, handleChangeOfUnit, 
     heightMetric, weightMetric, handleHeightChangeMetric, handleWeightChangeMetric,
     heightImperial,weightImperial,handleHeightChangeImperial,handleWeightChangeImperial,
-    bmi, classification, minWeight,maxWeight, errorsMetric, errorsImperial
+    bmi, classification, minWeight,maxWeight, errorsMetric, imperialHeightErrors, imperialWeightErrors
 }){
+ const errorsImperialHeight =
+        imperialHeightErrors.feet !== ""
+            ? imperialHeightErrors.feet
+            : imperialHeightErrors.inches;
+
+    const errorsImperialWeight =
+        imperialWeightErrors.stones !== ""
+            ? imperialWeightErrors.stones
+            : imperialWeightErrors.pounds;
+    console.log(``);
     return(
         <section className="computation-part">
             <div className="computation-part-inner-container">
@@ -100,7 +110,8 @@ function ComputationComponent({unit, handleChangeOfUnit,
                            Height
                        </label>
                    <div className={`container-for-height-imperial-input
-                       ${errorsImperial.height === "" ? "" : "error-label"}`}>
+                       ${imperialHeightErrors.feet === ""&&imperialHeightErrors.inches==="" ?
+                        "" : "error-label"}`}>
                        <label
                        htmlFor="height-feet" 
                        className="label-for-feet-input">
@@ -111,7 +122,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                            inputMode="numeric"
                             name="feet" 
                             value={heightImperial.feet} 
-                            
+                            aria-invalid={imperialHeightErrors.feet !== ""}
                             aria-describedby="height-imperial-error" 
                             onChange={handleHeightChangeImperial}  
                            />
@@ -128,7 +139,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                                   inputMode="numeric"
                                    name="inches" 
                                    value={heightImperial.inches} 
-                                    
+                                    aria-invalid={imperialHeightErrors.inches !== ""}
                                    aria-describedby="height-imperial-error" 
                                    onChange={handleHeightChangeImperial} 
                                    />
@@ -137,8 +148,9 @@ function ComputationComponent({unit, handleChangeOfUnit,
                    </div>
                    <p id="height-imperial-error"
                    className={`error-message ${
-                        errorsImperial.height === "" ? "no-error" : ""}`}>
-                       {errorsImperial.height || "\u00A0"}
+                        errorsImperialHeight===""? 
+                        "no-error" : ""}`}>
+                       {errorsImperialHeight || "\u00A0"}
                    </p>
                 </div>      
             
@@ -148,7 +160,8 @@ function ComputationComponent({unit, handleChangeOfUnit,
                        Weight
                     </label>
                     <div className={`container-for-weight-imperial-input
-                    ${errorsImperial.weight === "" ? "" : "error-label"}`}>
+                    ${imperialWeightErrors.stones === "" &&imperialWeightErrors.pounds ==="" ? 
+                    "" : "error-label"}`}>
                     <label
                     htmlFor="weight-stones" 
                     className="label-for-stones-input">
@@ -159,7 +172,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                         inputMode="numeric"
                          name="stones" 
                         value={weightImperial.stones}
-                         
+                         aria-invalid={imperialWeightErrors.stones !== ""}
                         aria-describedby="weight-imperial-error" 
                         onChange={handleWeightChangeImperial}
                       />
@@ -175,7 +188,7 @@ function ComputationComponent({unit, handleChangeOfUnit,
                             inputMode="numeric" 
                             name="pounds"
                              value={weightImperial.pounds}
-                              
+                               aria-invalid={imperialWeightErrors.pounds !== ""}
                               aria-describedby="weight-imperial-error" 
                               onChange={handleWeightChangeImperial}
                        />
@@ -185,15 +198,16 @@ function ComputationComponent({unit, handleChangeOfUnit,
                 <p
                 id="weight-imperial-error" 
                 className={`error-message ${
-                   errorsImperial.weight === "" ? "no-error" : ""}`}>
-                   {errorsImperial.weight || "\u00A0"}
+                   errorsImperialWeight === "" ? "no-error" : ""}`}>
+                   {errorsImperialWeight || "\u00A0"}
                 </p>
              </div>
            </div>        
             )}
             <OutputComponent bmi={bmi} classification={classification}
                              minWeight={minWeight} maxWeight={maxWeight} errorsMetric={errorsMetric}
-                             errorsImperial={errorsImperial}/>
+                             errorsImperialHeight={errorsImperialHeight} 
+                             errorsImperialWeight={errorsImperialWeight}/>
             </div>
         </section>
     )
