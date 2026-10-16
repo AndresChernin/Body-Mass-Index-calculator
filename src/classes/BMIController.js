@@ -96,12 +96,13 @@ class BMIController{
       
       const heightCm=this.convertHeightImperial(height);
       if (inches < 0 || inches > 11) {
-         return "Inches muss be between 0 and 11";
+         return {feet:"", inches:"Inches muss be between 0 and 11"};
+         
      }
      else  if(heightCm<50 || heightCm >250){
-            return "Height must be ∈[1ft 7.7in , 8ft 2.45 in]"
+            return {feet:"Height must be ∈[1ft 7.7in , 8ft 2.45 in]", inches:""};
         }
-        else return "";
+        else return {feet:"", inches:""};
     }
     controllImperialWeight(weight){
         
@@ -111,12 +112,12 @@ class BMIController{
       const weightKg=this.convertWeightImperial(weight);
       
       if (pounds < 0 || pounds > 13) {
-         return "Pounds muss be between 0 and 13";
+         return {stones:"",pounds:"Pounds muss be between 0 and 13"};
      }
      else  if(weightKg<20 || weightKg >300){
-            return "Weight must be ∈[3st 2.1lbs , 47st 3.4lbs]"
+            return {stones:"Weight must be ∈[3st 2.1lbs , 47st 3.4lbs]",pounds:""};
         }
-        else return "";
+        else return {stones:"", pounds:""};
     }
     
 } 
