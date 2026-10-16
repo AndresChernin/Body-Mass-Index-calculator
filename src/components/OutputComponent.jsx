@@ -4,10 +4,11 @@ function OutputComponent({
     minWeight,
     maxWeight,
     errorsMetric,
-    errorsImperial
+    errorsImperialHeight,
+    errorsImperialWeight
 }) {
     const hasErrors =
-        errorsMetric.height !== "" || errorsImperial.height!=="" || errorsImperial.weight!==""||
+        errorsMetric.height !== "" || errorsImperialHeight!=="" || errorsImperialWeight!==""||
         errorsMetric.weight !== "";
 
     return (
